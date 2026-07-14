@@ -36,14 +36,28 @@
     .hero-tagline { font-size: clamp(14px, 2.5vw, 20px); font-weight: 400; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 32px; }
     .hero-headline { font-size: clamp(17px, 3vw, 26px); font-weight: 500; color: var(--text); max-width: 600px; margin: 0 auto 48px; line-height: 1.5; }
     .hero-headline em { color: var(--teal); font-style: normal; }
-    .waitlist-form { display: flex; gap: 12px; max-width: 480px; width: 100%; margin: 0 auto 16px; flex-wrap: wrap; justify-content: center; }
-    .waitlist-form input[type="email"] { flex: 1; min-width: 220px; padding: 14px 20px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'Space Grotesk', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; }
-    .waitlist-form input[type="email"]:focus { border-color: var(--teal); }
-    .waitlist-form input[type="email"]::placeholder { color: var(--muted); }
-    .waitlist-form button { padding: 14px 28px; background: var(--teal); color: var(--dark); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.2s; }
+
+    /* FORM STYLES */
+    .waitlist-form { display: flex; flex-direction: column; gap: 10px; max-width: 480px; width: 100%; margin: 0 auto 12px; }
+    .waitlist-form-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .waitlist-form input[type="email"],
+    .waitlist-form input[type="tel"] {
+      flex: 1; min-width: 220px; padding: 14px 20px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; color: var(--white);
+      font-family: 'Space Grotesk', sans-serif; font-size: 15px;
+      outline: none; transition: border-color 0.2s; width: 100%;
+    }
+    .waitlist-form input[type="email"]:focus,
+    .waitlist-form input[type="tel"]:focus { border-color: var(--teal); }
+    .waitlist-form input[type="email"]::placeholder,
+    .waitlist-form input[type="tel"]::placeholder { color: var(--muted); }
+    .waitlist-form button { padding: 14px 28px; background: var(--teal); color: var(--dark); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.2s; width: 100%; }
     .waitlist-form button:hover { opacity: 0.88; }
+    .launch-note { font-size: 13px; color: var(--teal); opacity: 0.8; margin-bottom: 6px; letter-spacing: 0.02em; }
     .waitlist-sub { font-size: 13px; color: var(--muted); }
     .mc-hidden { position: absolute; left: -5000px; }
+
     .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
     .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
     .section-title { font-size: clamp(28px, 5vw, 48px); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 24px; letter-spacing: -1px; }
@@ -127,9 +141,11 @@
 
   <form action="https://whatsitlookinglike.us8.list-manage.com/subscribe/post?u=fe6f2220b443aace59fc4cd1d&amp;id=996d05819a&amp;f_id=00a511e1f0" method="post" class="waitlist-form" target="_blank" novalidate>
     <input type="email" name="EMAIL" placeholder="Enter your email" required />
+    <input type="tel" name="PHONE" placeholder="Phone number (optional)" />
     <div class="mc-hidden" aria-hidden="true"><input type="text" name="b_fe6f2220b443aace59fc4cd1d_996d05819a" tabindex="-1" value="" /></div>
     <button type="submit">Join Waitlist →</button>
   </form>
+  <p class="launch-note">✦ Be the first to know about W¿LL launch events hosted at Atlanta venues</p>
   <p class="waitlist-sub">Free. No spam. Be first when W¿LL drops in Atlanta.</p>
 </section>
 
@@ -151,7 +167,7 @@
 <section class="how-section">
   <div class="how-inner">
     <p class="section-label">How It Works</p>
-    <h2 class="section-title">Real intel. From real people. Tonight.</h2>
+    <h2 class="section-title">Real intel. From real people. Instantly.</h2>
     <div class="divider"></div>
     <div class="steps">
       <div class="step"><div class="step-number">1</div><h3>Open W¿LL</h3><p>See every venue near you with live scores updated by people who are actually there right now.</p></div>
@@ -277,9 +293,11 @@
   <p class="section-body" style="max-width:500px;margin:0 auto 48px;">Join the waitlist and get early access when W¿LL drops. Free forever for early members.</p>
   <form action="https://whatsitlookinglike.us8.list-manage.com/subscribe/post?u=fe6f2220b443aace59fc4cd1d&amp;id=996d05819a&amp;f_id=00a511e1f0" method="post" class="waitlist-form" target="_blank" novalidate>
     <input type="email" name="EMAIL" placeholder="Enter your email" required />
+    <input type="tel" name="PHONE" placeholder="Phone number (optional)" />
     <div class="mc-hidden" aria-hidden="true"><input type="text" name="b_fe6f2220b443aace59fc4cd1d_996d05819a" tabindex="-1" value="" /></div>
     <button type="submit">Get Early Access →</button>
   </form>
+  <p class="launch-note">✦ Be the first to know about W¿LL launch events hosted at Atlanta venues</p>
   <p class="waitlist-sub">No spam. Unsubscribe anytime. © Bokaq Inc.</p>
 </section>
 
