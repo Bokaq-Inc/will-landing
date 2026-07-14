@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="W¿LL — Atlanta's nightlife intelligence app. Know what's really happening before you leave the house. Join the waitlist." />
-
-  <!-- Open Graph / iMessage / Social preview -->
   <meta property="og:title" content="W¿LL — Know Before You Go" />
   <meta property="og:description" content="Atlanta's first real-time nightlife app. Live crowd ratings, venue vibes, no more showing up to a dead spot." />
   <meta property="og:image" content="https://whatsitlookinglike.com/og-image.png" />
@@ -14,13 +12,10 @@
   <meta property="og:url" content="https://whatsitlookinglike.com" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="W¿LL" />
-
-  <!-- Twitter card (also used by iMessage on some iOS versions) -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="W¿LL — Know Before You Go" />
   <meta name="twitter:description" content="Atlanta's first real-time nightlife app. Live crowd ratings, venue vibes, no more showing up to a dead spot." />
   <meta name="twitter:image" content="https://whatsitlookinglike.com/og-image.png" />
-
   <title>W¿LL — Know Before You Go | Atlanta Nightlife</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -57,13 +52,18 @@
     .hero-headline { font-size: clamp(17px, 3vw, 26px); font-weight: 500; color: var(--text); max-width: 600px; margin: 0 auto 48px; line-height: 1.5; }
     .hero-headline em { color: var(--teal); font-style: normal; }
     .waitlist-form { display: flex; flex-direction: column; gap: 10px; max-width: 480px; width: 100%; margin: 0 auto 12px; }
-    .waitlist-form input[type="email"],
-    .waitlist-form input[type="tel"] { flex: 1; min-width: 220px; padding: 14px 20px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'Space Grotesk', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; width: 100%; }
-    .waitlist-form input[type="email"]:focus,
-    .waitlist-form input[type="tel"]:focus { border-color: var(--teal); }
+    .waitlist-form input { width: 100%; padding: 14px 20px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; color: var(--white); font-family: 'Space Grotesk', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; }
+    .waitlist-form input:focus { border-color: var(--teal); }
     .waitlist-form input::placeholder { color: var(--muted); }
+    .waitlist-form input.input-error { border-color: #FF453A; }
+    .waitlist-form input.input-success { border-color: var(--teal); }
     .waitlist-form button { padding: 14px 28px; background: var(--teal); color: var(--dark); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; border: none; border-radius: 8px; cursor: pointer; transition: opacity 0.2s; width: 100%; }
     .waitlist-form button:hover { opacity: 0.88; }
+    .waitlist-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-msg { font-size: 13px; text-align: center; min-height: 20px; margin-bottom: 4px; }
+    .form-msg.success { color: var(--teal); }
+    .form-msg.error { color: #FF453A; }
+    .form-msg.already { color: var(--gold); }
     .launch-note { font-size: 13px; color: var(--teal); opacity: 0.8; margin-bottom: 6px; letter-spacing: 0.02em; }
     .waitlist-sub { font-size: 13px; color: var(--muted); }
     .hero-social { display: flex; align-items: center; gap: 20px; margin-top: 28px; justify-content: center; }
@@ -125,7 +125,6 @@
     .city-ring { position: absolute; left: 50%; top: 55%; border-radius: 50%; border: 1px solid var(--teal); animation: ping 2.5s ease-out infinite; transform: translate(-50%, -50%); }
     @keyframes ping { 0% { width: 40px; height: 40px; opacity: 0.8; } 100% { width: 200px; height: 200px; opacity: 0; } }
     .waitlist-section { padding: 100px 24px; text-align: center; background: var(--surface); border-top: 1px solid var(--border); }
-    /* Footer social row */
     .footer-social { display: flex; gap: 16px; align-items: center; }
     .footer-social a { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; text-decoration: none; transition: color 0.2s; }
     .footer-social a:hover { color: var(--teal); }
@@ -136,12 +135,7 @@
     .footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--teal); }
     .footer-copy { font-size: 12px; color: var(--muted); width: 100%; }
-    @media (max-width: 600px) {
-      nav { padding: 16px 20px; }
-      .nav-social { display: none; }
-      .city-section { flex-direction: column; }
-      footer { flex-direction: column; }
-    }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .nav-social { display: none; } .city-section { flex-direction: column; } footer { flex-direction: column; } }
   </style>
 </head>
 <body>
@@ -150,48 +144,36 @@
   <a href="#" class="nav-logo">W<span>¿</span>LL</a>
   <div class="nav-right">
     <div class="nav-social">
-      <a href="https://www.tiktok.com/@will.atlanta" target="_blank" rel="noopener">
-        <span class="platform">TikTok</span> @will.atlanta
-      </a>
-      <a href="https://www.instagram.com/will.atlanta" target="_blank" rel="noopener">
-        <span class="platform">IG</span> @will.atlanta
-      </a>
+      <a href="https://www.tiktok.com/@will.atlanta" target="_blank" rel="noopener"><span class="platform">TikTok</span> @will.atlanta</a>
+      <a href="https://www.instagram.com/will.atlanta" target="_blank" rel="noopener"><span class="platform">IG</span> @will.atlanta</a>
     </div>
     <a href="#waitlist" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="stars" id="stars"></div>
-
   <p class="hero-eyebrow">Coming to Atlanta</p>
   <h1 class="hero-wordmark">W<span class="mark">¿</span>LL</h1>
   <p class="hero-tagline">Know Before You Go</p>
   <p class="hero-headline">Atlanta's first real-time nightlife app.<br /><em>Live crowd ratings. Venue vibes. No more dead spots.</em></p>
 
-  <form action="https://whatsitlookinglike.us8.list-manage.com/subscribe/post?u=fe6f2220b443aace59fc4cd1d&amp;id=996d05819a&amp;f_id=00a511e1f0" method="post" class="waitlist-form" target="_blank" novalidate>
-    <input type="email" name="EMAIL" placeholder="Enter your email" required />
-    <input type="tel" name="PHONE" placeholder="Phone number (optional)" />
-    <div class="mc-hidden" aria-hidden="true"><input type="text" name="b_fe6f2220b443aace59fc4cd1d_996d05819a" tabindex="-1" value="" /></div>
-    <button type="submit">Join Waitlist →</button>
+  <div id="form-msg-hero" class="form-msg"></div>
+  <form id="mc-form-hero" class="waitlist-form" novalidate>
+    <input type="email" id="email-hero" placeholder="Enter your email" required />
+    <input type="tel" id="phone-hero" placeholder="Phone number (optional)" />
+    <div class="mc-hidden" aria-hidden="true"><input type="text" id="mc-bot-hero" tabindex="-1" value="" /></div>
+    <button type="submit" id="btn-hero">Join Waitlist →</button>
   </form>
   <p class="launch-note">✦ Be the first to know about W¿LL launch events hosted at Atlanta venues</p>
   <p class="waitlist-sub">Free. No spam. Be first when W¿LL drops in Atlanta.</p>
-
-  <!-- Social links under form -->
   <div class="hero-social">
-    <a href="https://www.tiktok.com/@will.atlanta" target="_blank" rel="noopener">
-      <span class="social-icon">♪</span> TikTok &nbsp;@will.atlanta
-    </a>
-    <a href="https://www.instagram.com/will.atlanta" target="_blank" rel="noopener">
-      <span class="social-icon">◎</span> Instagram &nbsp;@will.atlanta
-    </a>
+    <a href="https://www.tiktok.com/@will.atlanta" target="_blank" rel="noopener"><span class="social-icon">♪</span> TikTok &nbsp;@will.atlanta</a>
+    <a href="https://www.instagram.com/will.atlanta" target="_blank" rel="noopener"><span class="social-icon">◎</span> Instagram &nbsp;@will.atlanta</a>
   </div>
 </section>
 
-<!-- PROBLEM -->
 <section class="section">
   <p class="section-label">The Problem</p>
   <h2 class="section-title">You've been there.<br />We built the fix.</h2>
@@ -205,7 +187,6 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how-section">
   <div class="how-inner">
     <p class="section-label">How It Works</p>
@@ -220,7 +201,6 @@
   </div>
 </section>
 
-<!-- MOCKUPS -->
 <section class="mockup-section">
   <p class="section-label">The App</p>
   <h2 class="section-title">Built for the night.</h2>
@@ -295,7 +275,6 @@
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="features-section">
   <div class="features-inner">
     <p class="section-label">Features</p>
@@ -312,7 +291,6 @@
   </div>
 </section>
 
-<!-- CITY -->
 <section class="city-section">
   <div class="city-text">
     <p class="section-label">Atlanta First</p>
@@ -327,23 +305,22 @@
   </div>
 </section>
 
-<!-- WAITLIST BOTTOM -->
 <section class="waitlist-section" id="waitlist">
   <p class="section-label">Early Access</p>
   <h2 class="section-title">Be first in Atlanta.</h2>
   <div class="divider" style="margin:20px auto;"></div>
   <p class="section-body" style="max-width:500px;margin:0 auto 48px;">Join the waitlist and get early access when W¿LL drops. Free forever for early members.</p>
-  <form action="https://whatsitlookinglike.us8.list-manage.com/subscribe/post?u=fe6f2220b443aace59fc4cd1d&amp;id=996d05819a&amp;f_id=00a511e1f0" method="post" class="waitlist-form" target="_blank" novalidate>
-    <input type="email" name="EMAIL" placeholder="Enter your email" required />
-    <input type="tel" name="PHONE" placeholder="Phone number (optional)" />
-    <div class="mc-hidden" aria-hidden="true"><input type="text" name="b_fe6f2220b443aace59fc4cd1d_996d05819a" tabindex="-1" value="" /></div>
-    <button type="submit">Get Early Access →</button>
+  <div id="form-msg-bottom" class="form-msg"></div>
+  <form id="mc-form-bottom" class="waitlist-form" novalidate>
+    <input type="email" id="email-bottom" placeholder="Enter your email" required />
+    <input type="tel" id="phone-bottom" placeholder="Phone number (optional)" />
+    <div class="mc-hidden" aria-hidden="true"><input type="text" id="mc-bot-bottom" tabindex="-1" value="" /></div>
+    <button type="submit" id="btn-bottom">Get Early Access →</button>
   </form>
   <p class="launch-note">✦ Be the first to know about W¿LL launch events hosted at Atlanta venues</p>
   <p class="waitlist-sub">No spam. Unsubscribe anytime. © Bokaq Inc.</p>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">W<span>¿</span>LL</div>
   <div class="footer-social">
@@ -359,6 +336,7 @@
 </footer>
 
 <script>
+  // ── Stars ──────────────────────────────────────────────────────────────────
   const starsEl = document.getElementById('stars');
   for (let i = 0; i < 80; i++) {
     const star = document.createElement('div');
@@ -367,8 +345,110 @@
     star.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;width:${size}px;height:${size}px;--dur:${(Math.random()*2+1).toFixed(1)}s;--delay:${(Math.random()*3).toFixed(1)}s;`;
     starsEl.appendChild(star);
   }
+
+  // ── Smooth scroll ──────────────────────────────────────────────────────────
   document.querySelectorAll('a[href="#waitlist"]').forEach(a => {
     a.addEventListener('click', e => { e.preventDefault(); document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); });
+  });
+
+  // ── Mailchimp AJAX submission ──────────────────────────────────────────────
+  // Uses JSONP so phone number and all fields are sent correctly cross-origin.
+  // Mailchimp's -json endpoint returns structured responses we can parse.
+  const MC_URL = 'https://whatsitlookinglike.us8.list-manage.com/subscribe/post-json?u=fe6f2220b443aace59fc4cd1d&id=996d05819a';
+
+  function submitToMailchimp(emailVal, phoneVal, msgEl, btnEl) {
+    // Basic email validation
+    if (!emailVal || !emailVal.includes('@')) {
+      showMsg(msgEl, 'Please enter a valid email address.', 'error');
+      return;
+    }
+
+    btnEl.disabled = true;
+    btnEl.textContent = 'Joining...';
+    showMsg(msgEl, '', '');
+
+    // Build the callback name for JSONP
+    const cbName = 'mcCallback_' + Date.now();
+
+    // Build query string — PHONE must match Mailchimp merge tag exactly
+    const params = new URLSearchParams({
+      EMAIL: emailVal,
+      PHONE: phoneVal || '',
+      b_fe6f2220b443aace59fc4cd1d_996d05819a: '', // honeypot
+      c: cbName,
+    });
+
+    // Create JSONP script tag
+    const script = document.createElement('script');
+    script.src = MC_URL + '&' + params.toString();
+
+    // Set up callback
+    window[cbName] = function(data) {
+      // Clean up
+      delete window[cbName];
+      document.head.removeChild(script);
+      btnEl.disabled = false;
+
+      if (data.result === 'success') {
+        btnEl.textContent = '✓ You\'re on the list!';
+        showMsg(msgEl, '✓ You\'re on the list! We\'ll be in touch before launch.', 'success');
+      } else if (data.msg && data.msg.toLowerCase().includes('already subscribed')) {
+        btnEl.textContent = 'Already joined!';
+        showMsg(msgEl, 'This email has already joined the waitlist.', 'already');
+      } else {
+        btnEl.textContent = 'Join Waitlist →';
+        showMsg(msgEl, 'Something went wrong. Please try again.', 'error');
+        console.error('Mailchimp error:', data.msg);
+      }
+    };
+
+    // Timeout fallback in case script never loads
+    const timeout = setTimeout(() => {
+      if (window[cbName]) {
+        delete window[cbName];
+        try { document.head.removeChild(script); } catch(e) {}
+        btnEl.disabled = false;
+        btnEl.textContent = 'Join Waitlist →';
+        showMsg(msgEl, 'Connection timed out. Please try again.', 'error');
+      }
+    }, 10000);
+
+    script.onerror = () => {
+      clearTimeout(timeout);
+      delete window[cbName];
+      btnEl.disabled = false;
+      btnEl.textContent = 'Join Waitlist →';
+      showMsg(msgEl, 'Something went wrong. Please try again.', 'error');
+    };
+
+    document.head.appendChild(script);
+  }
+
+  function showMsg(el, text, type) {
+    el.textContent = text;
+    el.className = 'form-msg' + (type ? ' ' + type : '');
+  }
+
+  // ── Wire up hero form ──────────────────────────────────────────────────────
+  document.getElementById('mc-form-hero').addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitToMailchimp(
+      document.getElementById('email-hero').value.trim(),
+      document.getElementById('phone-hero').value.trim(),
+      document.getElementById('form-msg-hero'),
+      document.getElementById('btn-hero')
+    );
+  });
+
+  // ── Wire up bottom form ────────────────────────────────────────────────────
+  document.getElementById('mc-form-bottom').addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitToMailchimp(
+      document.getElementById('email-bottom').value.trim(),
+      document.getElementById('phone-bottom').value.trim(),
+      document.getElementById('form-msg-bottom'),
+      document.getElementById('btn-bottom')
+    );
   });
 </script>
 </body>
