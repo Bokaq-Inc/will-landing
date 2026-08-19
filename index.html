@@ -353,9 +353,12 @@
     a.addEventListener('click', e => { e.preventDefault(); document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); });
   });
 
-  const MC_URL = 'https://whatsitlookinglike.us8.list-manage.com/subscribe/post-json?u=fe6f2220b443aace59fc4cd1d&id=996d05819a';
+  // Server-side waitlist proxy on our own backend. Unlike the old Mailchimp
+  // JSONP call (list-manage.com is on most ad/privacy blocklists), this domain
+  // isn't blocked, so signups go through even with blockers enabled.
+  const WAITLIST_URL = 'https://will-app-production-07a7.up.railway.app/api/waitlist';
 
-  function submitToMailchimp(emailVal, phoneVal, msgEl, btnEl) {
+  function submitToWaitlist(emailVal, phoneVal, hpVal, msgEl, btnEl) {
     if (!emailVal || !emailVal.includes('@')) {
       showMsg(msgEl, 'Please enter a valid email address.', 'error');
       return;
@@ -363,48 +366,34 @@
     btnEl.disabled = true;
     btnEl.textContent = 'Joining...';
     showMsg(msgEl, '', '');
-    const cbName = 'mcCallback_' + Date.now();
-    const params = new URLSearchParams({
-      EMAIL: emailVal,
-      PHONE: phoneVal || '',
-      b_fe6f2220b443aace59fc4cd1d_996d05819a: '',
-      c: cbName,
-    });
-    const script = document.createElement('script');
-    script.src = MC_URL + '&' + params.toString();
-    window[cbName] = function(data) {
-      delete window[cbName];
-      document.head.removeChild(script);
-      btnEl.disabled = false;
-      if (data.result === 'success') {
-        btnEl.textContent = '✓ You\'re on the list!';
-        showMsg(msgEl, '✓ You\'re on the list! We\'ll be in touch before launch.', 'success');
-      } else if (data.msg && data.msg.toLowerCase().includes('already subscribed')) {
-        btnEl.textContent = 'Already joined!';
-        showMsg(msgEl, 'This email has already joined the waitlist.', 'already');
-      } else {
-        btnEl.textContent = 'Join Waitlist →';
-        showMsg(msgEl, 'Something went wrong. Please try again.', 'error');
-        console.error('Mailchimp error:', data.msg);
-      }
-    };
-    const timeout = setTimeout(() => {
-      if (window[cbName]) {
-        delete window[cbName];
-        try { document.head.removeChild(script); } catch(e) {}
+
+    fetch(WAITLIST_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: emailVal, phone: phoneVal || '', hp: hpVal || '' }),
+    })
+      .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, d: d }; }); })
+      .then(function(res) {
+        btnEl.disabled = false;
+        var d = res.d || {};
+        if (res.ok && d.success && d.alreadySubscribed) {
+          btnEl.textContent = 'Already joined!';
+          showMsg(msgEl, 'This email has already joined the waitlist.', 'already');
+        } else if (res.ok && d.success) {
+          btnEl.textContent = '✓ You\'re on the list!';
+          showMsg(msgEl, '✓ You\'re on the list! We\'ll be in touch before launch.', 'success');
+        } else {
+          btnEl.textContent = 'Join Waitlist →';
+          showMsg(msgEl, d.error || 'Something went wrong. Please try again.', 'error');
+        }
+      })
+      .catch(function() {
+        // Reaching our own backend failed — almost always an ad/privacy blocker
+        // or a network drop. Give the user a real path forward.
         btnEl.disabled = false;
         btnEl.textContent = 'Join Waitlist →';
-        showMsg(msgEl, 'Connection timed out. Please try again.', 'error');
-      }
-    }, 10000);
-    script.onerror = () => {
-      clearTimeout(timeout);
-      delete window[cbName];
-      btnEl.disabled = false;
-      btnEl.textContent = 'Join Waitlist →';
-      showMsg(msgEl, 'Something went wrong. Please try again.', 'error');
-    };
-    document.head.appendChild(script);
+        showMsg(msgEl, 'Couldn’t submit — an ad or privacy blocker may be interfering. Please disable it and try again, or email support@whatsitlookinglike.com and we’ll add you.', 'error');
+      });
   }
 
   function showMsg(el, text, type) {
@@ -414,9 +403,10 @@
 
   document.getElementById('mc-form-hero').addEventListener('submit', function(e) {
     e.preventDefault();
-    submitToMailchimp(
+    submitToWaitlist(
       document.getElementById('email-hero').value.trim(),
       document.getElementById('phone-hero').value.trim(),
+      document.getElementById('mc-bot-hero').value.trim(),
       document.getElementById('form-msg-hero'),
       document.getElementById('btn-hero')
     );
@@ -424,9 +414,10 @@
 
   document.getElementById('mc-form-bottom').addEventListener('submit', function(e) {
     e.preventDefault();
-    submitToMailchimp(
+    submitToWaitlist(
       document.getElementById('email-bottom').value.trim(),
       document.getElementById('phone-bottom').value.trim(),
+      document.getElementById('mc-bot-bottom').value.trim(),
       document.getElementById('form-msg-bottom'),
       document.getElementById('btn-bottom')
     );
