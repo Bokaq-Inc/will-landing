@@ -358,6 +358,27 @@
   // isn't blocked, so signups go through even with blockers enabled.
   const WAITLIST_URL = 'https://will-app-production-07a7.up.railway.app/api/waitlist';
 
+  // Capture the yard-sign QR tags (utm_*) on first landing and keep them for the
+  // whole session, so the signup records which design + location drove it even if
+  // the user scrolls, reloads, or the URL params get stripped.
+  function getUTM() {
+    try {
+      var stored = sessionStorage.getItem('will_utm');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    var p = new URLSearchParams(window.location.search);
+    var utm = {
+      source: p.get('utm_source') || '',
+      medium: p.get('utm_medium') || '',
+      campaign: p.get('utm_campaign') || '',
+      content: p.get('utm_content') || '',
+      term: p.get('utm_term') || ''
+    };
+    try { sessionStorage.setItem('will_utm', JSON.stringify(utm)); } catch (e) {}
+    return utm;
+  }
+  getUTM(); // persist immediately on page load
+
   function submitToWaitlist(emailVal, phoneVal, hpVal, msgEl, btnEl) {
     if (!emailVal || !emailVal.includes('@')) {
       showMsg(msgEl, 'Please enter a valid email address.', 'error');
@@ -370,7 +391,7 @@
     fetch(WAITLIST_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailVal, phone: phoneVal || '', hp: hpVal || '' }),
+      body: JSON.stringify({ email: emailVal, phone: phoneVal || '', hp: hpVal || '', utm: getUTM(), referrer: document.referrer || '', path: window.location.pathname || '/' }),
     })
       .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, d: d }; }); })
       .then(function(res) {
@@ -423,6 +444,10 @@
     );
   });
 </script>
+<!-- Vercel Web Analytics — raw scan/visit counts + UTM breakdowns (design/location).
+     Requires "Web Analytics" enabled in the Vercel project dashboard. -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 
