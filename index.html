@@ -177,7 +177,7 @@
   <p class="hero-tagline">Know Before You Go</p>
   <p class="hero-headline">Atlanta's first real-time nightlife app.<br /><em>Live crowd ratings. Venue vibes. No more dead spots.</em></p>
 
-  <p class="scroll-cue">Scroll to see Atlanta's biggest nightlife problem — and how we fixed it <span class="scroll-arrow">↓</span></p>
+  <p class="scroll-cue">Scroll to see Atlanta's biggest nightlife problem and how we fixed it <span class="scroll-arrow">↓</span></p>
 
   <p class="social-proof" style="display:none;"></p>
   <div id="form-msg-hero" class="form-msg"></div>
@@ -389,7 +389,7 @@
 
   // Social proof — show the live waitlist size once it's credible
   (function () {
-    var THRESHOLD = 25; // hide until the number is worth showing
+    var THRESHOLD = 150; // hide until the number is worth showing
     fetch('https://will-app-production-07a7.up.railway.app/api/waitlist/count')
       .then(function (r) { return r.json(); })
       .then(function (d) {
