@@ -48,6 +48,22 @@
     .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; }
     .hero-wordmark { font-size: clamp(72px, 14vw, 140px); font-weight: 800; color: var(--white); letter-spacing: -4px; line-height: 1; margin-bottom: 8px; }
     .hero-wordmark .mark { color: var(--teal); font-weight: 300; }
+    /* Star-dotted ¿ mark (matches the app wordmark). Scales with font-size. */
+    .mark-img { height: 1.05em; width: auto; vertical-align: -0.22em; margin: 0 0.02em; }
+    .scroll-cue { font-size: 14px; color: var(--teal); font-weight: 600; letter-spacing: 0.02em; margin: 0 0 20px; }
+    .scroll-cue .scroll-arrow { display: inline-block; animation: nudge 1.4s ease-in-out infinite; }
+    @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+    /* Social proof (shown only once the waitlist is big enough) */
+    .social-proof { font-size: 14px; color: var(--muted); margin: 0 0 14px; }
+    .social-proof strong { color: var(--teal); font-weight: 700; }
+    /* Sticky mobile CTA — keeps "Join" one tap away as users read */
+    .sticky-cta { display: none; }
+    .sticky-cta.hide { transform: translateY(130%); }
+    @media (max-width: 767px) {
+      .sticky-cta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 200; padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); background: rgba(13,13,13,0.96); border-top: 1px solid var(--border); backdrop-filter: blur(8px); transition: transform 0.25s ease; }
+      .sticky-cta a { display: block; text-align: center; background: var(--teal); color: var(--dark); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; padding: 14px; border-radius: 8px; text-decoration: none; }
+      body { padding-bottom: 78px; }
+    }
     .hero-tagline { font-size: clamp(14px, 2.5vw, 20px); font-weight: 400; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 32px; }
     .hero-headline { font-size: clamp(17px, 3vw, 26px); font-weight: 500; color: var(--text); max-width: 600px; margin: 0 auto 48px; line-height: 1.5; }
     .hero-headline em { color: var(--teal); font-style: normal; }
@@ -143,7 +159,7 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">W<span>¿</span>LL</a>
+  <a href="#" class="nav-logo">W<img src="/mark.png" class="mark-img" alt="¿" />LL</a>
   <div class="nav-right">
     <div class="nav-social">
       <a href="https://www.tiktok.com/@will.atlanta" target="_blank" rel="noopener"><span class="platform">TikTok</span> @will.atlanta</a>
@@ -157,10 +173,13 @@
   <div class="hero-bg"></div>
   <div class="stars" id="stars"></div>
   <p class="hero-eyebrow">Coming to Atlanta</p>
-  <h1 class="hero-wordmark">W<span class="mark">¿</span>LL</h1>
+  <h1 class="hero-wordmark">W<img src="/mark.png" class="mark-img" alt="¿" />LL</h1>
   <p class="hero-tagline">Know Before You Go</p>
   <p class="hero-headline">Atlanta's first real-time nightlife app.<br /><em>Live crowd ratings. Venue vibes. No more dead spots.</em></p>
 
+  <p class="scroll-cue">Scroll to see Atlanta's biggest nightlife problem — and how we fixed it <span class="scroll-arrow">↓</span></p>
+
+  <p class="social-proof" style="display:none;"></p>
   <div id="form-msg-hero" class="form-msg"></div>
   <form id="mc-form-hero" class="waitlist-form" novalidate>
     <input type="email" id="email-hero" placeholder="Enter your email" required />
@@ -213,7 +232,7 @@
       <div class="phone-frame">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <div class="screen-header">W<span>¿</span>LL</div>
+          <div class="screen-header">W<img src="/mark.png" class="mark-img" alt="¿" />LL</div>
           <div class="venue-card-mock"><div class="venue-img-mock">🌆</div><div class="venue-name-mock">Whiskey Mistress</div><div class="venue-score-mock">● LIVE — 8.4 / 10</div><div class="score-bar"><div class="score-fill" style="width:84%"></div></div></div>
           <div class="venue-card-mock"><div class="venue-img-mock">🎵</div><div class="venue-name-mock">Havana Club</div><div class="venue-score-mock">● LIVE — 6.1 / 10</div><div class="score-bar"><div class="score-fill" style="width:61%"></div></div></div>
           <div class="venue-card-mock"><div class="venue-img-mock">🌃</div><div class="venue-name-mock">El Malo</div><div class="venue-score-mock">● LIVE — 9.2 / 10</div><div class="score-bar"><div class="score-fill" style="width:92%"></div></div></div>
@@ -226,7 +245,7 @@
       <div class="phone-frame center">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <div class="screen-header">W<span>¿</span>LL</div>
+          <div class="screen-header">W<img src="/mark.png" class="mark-img" alt="¿" />LL</div>
           <div style="background:linear-gradient(135deg,#0a2a1a,#041a0a);height:75px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:7px;">🌃</div>
           <div style="font-size:12px;font-weight:700;color:var(--white);margin-bottom:2px;">El Malo</div>
           <div style="font-size:9px;color:var(--muted);margin-bottom:7px;">Club · 777 Memorial Dr SE</div>
@@ -249,7 +268,7 @@
       <div class="phone-frame">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <div class="screen-header">W<span>¿</span>LL</div>
+          <div class="screen-header">W<img src="/mark.png" class="mark-img" alt="¿" />LL</div>
           <div style="text-align:center;padding:6px 0 4px;"><div style="font-size:9px;color:var(--muted);margin-bottom:3px;">RATE THIS VENUE</div><div style="font-size:11px;font-weight:600;color:var(--white);">El Malo</div></div>
           <div style="display:flex;justify-content:center;gap:4px;padding:6px 0;">
             <div style="width:24px;height:24px;background:var(--teal);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;">★</div>
@@ -313,6 +332,7 @@
   <h2 class="section-title">Be first in Atlanta.</h2>
   <div class="divider" style="margin:20px auto;"></div>
   <p class="section-body" style="max-width:500px;margin:0 auto 48px;">Join the waitlist and get early access when W¿LL drops. Free forever for early members.</p>
+  <p class="social-proof" style="display:none;"></p>
   <div id="form-msg-bottom" class="form-msg"></div>
   <form id="mc-form-bottom" class="waitlist-form" novalidate>
     <input type="email" id="email-bottom" placeholder="Enter your email" required />
@@ -326,7 +346,7 @@
 </section>
 
 <footer>
-  <div class="footer-logo">W<span>¿</span>LL</div>
+  <div class="footer-logo">W<img src="/mark.png" class="mark-img" alt="¿" />LL</div>
   <div class="footer-social">
     <a href="https://www.tiktok.com/@will.atlanta" target="_blank" rel="noopener">TikTok @will.atlanta</a>
     <a href="https://www.instagram.com/will.atlanta" target="_blank" rel="noopener">Instagram @will.atlanta</a>
@@ -338,6 +358,8 @@
   </div>
   <p class="footer-copy">© 2025 Bokaq Inc. All rights reserved. Atlanta, Georgia.</p>
 </footer>
+
+<div class="sticky-cta" id="sticky-cta"><a href="#waitlist">Join the Waitlist →</a></div>
 
 <script>
   const starsEl = document.getElementById('stars');
@@ -352,6 +374,35 @@
   document.querySelectorAll('a[href="#waitlist"]').forEach(a => {
     a.addEventListener('click', e => { e.preventDefault(); document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); });
   });
+
+  // Sticky mobile CTA — hide it whenever a signup form is on screen (don't cover it)
+  (function () {
+    var bar = document.getElementById('sticky-cta');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    var visible = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.isIntersecting ? visible.add(e.target) : visible.delete(e.target); });
+      bar.classList.toggle('hide', visible.size > 0);
+    }, { threshold: 0.25 });
+    ['mc-form-hero', 'waitlist'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  })();
+
+  // Social proof — show the live waitlist size once it's credible
+  (function () {
+    var THRESHOLD = 25; // hide until the number is worth showing
+    fetch('https://will-app-production-07a7.up.railway.app/api/waitlist/count')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var c = (d && d.count) || 0;
+        if (c < THRESHOLD) return;
+        var n = Math.floor(c / 5) * 5; // round down to a clean number
+        document.querySelectorAll('.social-proof').forEach(function (el) {
+          el.innerHTML = '<strong>' + n + '+</strong> Atlantans already on the waitlist';
+          el.style.display = 'block';
+        });
+      })
+      .catch(function () {});
+  })();
 
   // Server-side waitlist proxy on our own backend. Unlike the old Mailchimp
   // JSONP call (list-manage.com is on most ad/privacy blocklists), this domain
