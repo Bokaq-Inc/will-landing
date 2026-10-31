@@ -13,7 +13,7 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ymduzygnye");
   </script>
-  <meta name="description" content="W¿LL — Atlanta's nightlife intelligence app. Know what's really happening before you leave the house. Join the waitlist." />
+  <meta name="description" content="W¿LL — Atlanta's nightlife intelligence app. Know what's really happening before you leave the house. Download now." />
   <meta property="og:title" content="W¿LL — Know Before You Go" />
   <meta property="og:description" content="Atlanta's first real-time nightlife app. Live crowd ratings, venue vibes, no more showing up to a dead spot." />
   <meta property="og:image" content="https://whatsitlookinglike.com/og-image.png" />
@@ -164,6 +164,11 @@
     .footer-links a:hover { color: var(--teal); }
     .footer-copy { font-size: 12px; color: var(--muted); width: 100%; }
     @media (max-width: 600px) { nav { padding: 16px 20px; } .nav-social { display: none; } .city-section { flex-direction: column; } footer { flex-direction: column; } }
+    .download-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; max-width: 480px; margin: 8px auto 0; }
+    .dl-btn { flex: 1; min-width: 200px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; padding: 16px 24px; border-radius: 8px; text-decoration: none; text-align: center; transition: opacity 0.2s, transform 0.2s; }
+    .dl-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+    .dl-ios { background: var(--teal); color: var(--dark); }
+    .dl-android { background: transparent; border: 1px solid var(--teal); color: var(--teal); }
   </style>
 </head>
 <body>
@@ -175,31 +180,22 @@
       <a href="https://www.tiktok.com/@willapp.official" target="_blank" rel="noopener"><span class="platform">TikTok</span> @willapp.official</a>
       <a href="https://www.instagram.com/willapp.official" target="_blank" rel="noopener"><span class="platform">IG</span> @willapp.official</a>
     </div>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    <a href="#download" class="nav-cta">Download</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="stars" id="stars"></div>
-  <p class="hero-eyebrow">Coming to Atlanta</p>
+  <p class="hero-eyebrow">Now live in Atlanta</p>
   <h1 class="hero-wordmark">W<img src="/mark.png" class="mark-img" alt="¿" />LL</h1>
   <p class="hero-tagline">Know Before You Go</p>
   <p class="hero-headline">Atlanta's first real-time nightlife app.<br /><em>Live crowd ratings. Venue vibes. No more dead spots.</em></p>
 
   <p class="scroll-cue">Scroll to see Atlanta's biggest nightlife problem and how we fixed it <span class="scroll-arrow">↓</span></p>
 
-  <p class="social-proof" style="display:none;"></p>
-  <div id="form-msg-hero" class="form-msg"></div>
-  <form id="mc-form-hero" class="waitlist-form" novalidate>
-    <input type="email" id="email-hero" placeholder="Enter your email" required />
-    <input type="tel" id="phone-hero" placeholder="Phone number (optional)" />
-    <div class="mc-hidden" aria-hidden="true"><input type="text" id="mc-bot-hero" tabindex="-1" value="" /></div>
-    <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#00F5A0;margin-bottom:10px;">Join Now to Become a Founding User!</p><button type="submit" id="btn-hero">Join Waitlist →</button>
-  </form>
-  <p class="sms-consent">By providing your phone number, you consent to receive SMS text messages from W¿LL (Bokaq Inc.) about Atlanta nightlife updates, venue alerts, and app announcements. Message frequency varies. Message &amp; data rates may apply. Reply STOP to cancel, HELP for help. Mobile opt-in data will not be shared with or sold to third parties or affiliates for marketing purposes. View our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</p>
-  <p class="launch-note">✦ Be the first to know about W¿LL launch events hosted at Atlanta venues</p>
-  <p class="waitlist-sub">Free. No spam. Be first when W¿LL drops in Atlanta.</p>
+  <div class="download-btns"><a href="https://apps.apple.com/app/id6815354875" target="_blank" rel="noopener" class="dl-btn dl-ios">Download for iPhone</a><a href="https://play.google.com/store/apps/details?id=com.willapp.will" target="_blank" rel="noopener" class="dl-btn dl-android">Download for Android</a></div>
+  <p class="waitlist-sub" style="margin-top:14px;">Free to download. Live now in Atlanta.</p>
   <div class="hero-social">
     <a href="https://www.tiktok.com/@willapp.official" target="_blank" rel="noopener"><span class="social-icon">♪</span> TikTok &nbsp;@willapp.official</a>
     <a href="https://www.instagram.com/willapp.official" target="_blank" rel="noopener"><span class="social-icon">◎</span> Instagram &nbsp;@willapp.official</a>
@@ -337,22 +333,13 @@
   </div>
 </section>
 
-<section class="waitlist-section" id="waitlist">
-  <p class="section-label">Early Access</p>
-  <h2 class="section-title">Be first in Atlanta.</h2>
+<section class="waitlist-section" id="download">
+  <p class="section-label">Get the App</p>
+  <h2 class="section-title">W¿LL is live in Atlanta.</h2>
   <div class="divider" style="margin:20px auto;"></div>
-  <p class="section-body" style="max-width:500px;margin:0 auto 48px;">Join the waitlist and get early access when W¿LL drops. Free forever for early members.</p>
-  <p class="social-proof" style="display:none;"></p>
-  <div id="form-msg-bottom" class="form-msg"></div>
-  <form id="mc-form-bottom" class="waitlist-form" novalidate>
-    <input type="email" id="email-bottom" placeholder="Enter your email" required />
-    <input type="tel" id="phone-bottom" placeholder="Phone number (optional)" />
-    <div class="mc-hidden" aria-hidden="true"><input type="text" id="mc-bot-bottom" tabindex="-1" value="" /></div>
-    <p style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#00F5A0;margin-bottom:10px;">Join Now to Become a Founding User!</p><button type="submit" id="btn-bottom">Get Early Access →</button>
-  </form>
-  <p class="sms-consent">By providing your phone number, you consent to receive SMS text messages from W¿LL (Bokaq Inc.) about Atlanta nightlife updates, venue alerts, and app announcements. Message frequency varies. Message &amp; data rates may apply. Reply STOP to cancel, HELP for help. Mobile opt-in data will not be shared with or sold to third parties or affiliates for marketing purposes. View our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</p>
-  <p class="launch-note">✦ Be the first to know about W¿LL launch events hosted at Atlanta venues</p>
-  <p class="waitlist-sub">No spam. Unsubscribe anytime. © Bokaq Inc.</p>
+  <p class="section-body" style="max-width:500px;margin:0 auto 32px;">Download free and see what's really happening tonight. Know before you go.</p>
+  <div class="download-btns"><a href="https://apps.apple.com/app/id6815354875" target="_blank" rel="noopener" class="dl-btn dl-ios">Download for iPhone</a><a href="https://play.google.com/store/apps/details?id=com.willapp.will" target="_blank" rel="noopener" class="dl-btn dl-android">Download for Android</a></div>
+  <p class="waitlist-sub" style="margin-top:20px;">Free forever. &copy; Bokaq Inc.</p>
 </section>
 
 <footer>
@@ -369,7 +356,7 @@
   <p class="footer-copy">© 2025 Bokaq Inc. All rights reserved. Atlanta, Georgia.</p>
 </footer>
 
-<div class="sticky-cta" id="sticky-cta"><a href="#waitlist">Join the Waitlist →</a></div>
+<div class="sticky-cta" id="sticky-cta"><a href="#download">Download W¿LL →</a></div>
 
 <script>
   const starsEl = document.getElementById('stars');
@@ -381,8 +368,8 @@
     starsEl.appendChild(star);
   }
 
-  document.querySelectorAll('a[href="#waitlist"]').forEach(a => {
-    a.addEventListener('click', e => { e.preventDefault(); document.getElementById('waitlist').scrollIntoView({behavior:'smooth'}); });
+  document.querySelectorAll('a[href="#download"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); document.getElementById('download').scrollIntoView({behavior:'smooth'}); });
   });
 
   // Sticky mobile CTA — hide it whenever a signup form is on screen (don't cover it)
@@ -394,116 +381,10 @@
       entries.forEach(function (e) { e.isIntersecting ? visible.add(e.target) : visible.delete(e.target); });
       bar.classList.toggle('hide', visible.size > 0);
     }, { threshold: 0.25 });
-    ['mc-form-hero', 'waitlist'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    ['download'].forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   })();
 
-  // Social proof — show the live waitlist size once it's credible
-  (function () {
-    var THRESHOLD = 150; // hide until the number is worth showing
-    fetch('https://will-app-production-07a7.up.railway.app/api/waitlist/count')
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var c = (d && d.count) || 0;
-        if (c < THRESHOLD) return;
-        var n = Math.floor(c / 5) * 5; // round down to a clean number
-        document.querySelectorAll('.social-proof').forEach(function (el) {
-          el.innerHTML = '<strong>' + n + '+</strong> Atlantans already on the waitlist';
-          el.style.display = 'block';
-        });
-      })
-      .catch(function () {});
-  })();
 
-  // Server-side waitlist proxy on our own backend. Unlike the old Mailchimp
-  // JSONP call (list-manage.com is on most ad/privacy blocklists), this domain
-  // isn't blocked, so signups go through even with blockers enabled.
-  const WAITLIST_URL = 'https://will-app-production-07a7.up.railway.app/api/waitlist';
-
-  // Capture the yard-sign QR tags (utm_*) on first landing and keep them for the
-  // whole session, so the signup records which design + location drove it even if
-  // the user scrolls, reloads, or the URL params get stripped.
-  function getUTM() {
-    try {
-      var stored = sessionStorage.getItem('will_utm');
-      if (stored) return JSON.parse(stored);
-    } catch (e) {}
-    var p = new URLSearchParams(window.location.search);
-    var utm = {
-      source: p.get('utm_source') || '',
-      medium: p.get('utm_medium') || '',
-      campaign: p.get('utm_campaign') || '',
-      content: p.get('utm_content') || '',
-      term: p.get('utm_term') || ''
-    };
-    try { sessionStorage.setItem('will_utm', JSON.stringify(utm)); } catch (e) {}
-    return utm;
-  }
-  getUTM(); // persist immediately on page load
-
-  function submitToWaitlist(emailVal, phoneVal, hpVal, msgEl, btnEl) {
-    if (!emailVal || !emailVal.includes('@')) {
-      showMsg(msgEl, 'Please enter a valid email address.', 'error');
-      return;
-    }
-    btnEl.disabled = true;
-    btnEl.textContent = 'Joining...';
-    showMsg(msgEl, '', '');
-
-    fetch(WAITLIST_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailVal, phone: phoneVal || '', hp: hpVal || '', utm: getUTM(), referrer: document.referrer || '', path: window.location.pathname || '/' }),
-    })
-      .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, d: d }; }); })
-      .then(function(res) {
-        btnEl.disabled = false;
-        var d = res.d || {};
-        if (res.ok && d.success && d.alreadySubscribed) {
-          btnEl.textContent = 'Already joined!';
-          showMsg(msgEl, 'This email has already joined the waitlist.', 'already');
-        } else if (res.ok && d.success) {
-          btnEl.textContent = '✓ You\'re on the list!';
-          showMsg(msgEl, '✓ You\'re on the list! We\'ll be in touch before launch.', 'success');
-        } else {
-          btnEl.textContent = 'Join Waitlist →';
-          showMsg(msgEl, d.error || 'Something went wrong. Please try again.', 'error');
-        }
-      })
-      .catch(function() {
-        // Reaching our own backend failed — almost always an ad/privacy blocker
-        // or a network drop. Give the user a real path forward.
-        btnEl.disabled = false;
-        btnEl.textContent = 'Join Waitlist →';
-        showMsg(msgEl, 'Couldn’t submit — an ad or privacy blocker may be interfering. Please disable it and try again, or email support@whatsitlookinglike.com and we’ll add you.', 'error');
-      });
-  }
-
-  function showMsg(el, text, type) {
-    el.textContent = text;
-    el.className = 'form-msg' + (type ? ' ' + type : '');
-  }
-
-  document.getElementById('mc-form-hero').addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitToWaitlist(
-      document.getElementById('email-hero').value.trim(),
-      document.getElementById('phone-hero').value.trim(),
-      document.getElementById('mc-bot-hero').value.trim(),
-      document.getElementById('form-msg-hero'),
-      document.getElementById('btn-hero')
-    );
-  });
-
-  document.getElementById('mc-form-bottom').addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitToWaitlist(
-      document.getElementById('email-bottom').value.trim(),
-      document.getElementById('phone-bottom').value.trim(),
-      document.getElementById('mc-bot-bottom').value.trim(),
-      document.getElementById('form-msg-bottom'),
-      document.getElementById('btn-bottom')
-    );
-  });
 </script>
 <!-- Vercel Web Analytics — raw scan/visit counts + UTM breakdowns (design/location).
      Requires "Web Analytics" enabled in the Vercel project dashboard. -->
